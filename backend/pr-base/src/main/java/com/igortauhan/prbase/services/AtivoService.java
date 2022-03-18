@@ -3,11 +3,11 @@ package com.igortauhan.prbase.services;
 import com.igortauhan.prbase.models.Ativo;
 import com.igortauhan.prbase.models.dto.AtivoDto;
 import com.igortauhan.prbase.repositories.AtivoRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class AtivoService {
@@ -18,9 +18,9 @@ public class AtivoService {
         this.ativoRepository = ativoRepository;
     }
 
-    public List<AtivoDto> findAll() {
-        List<Ativo> ativos = ativoRepository.findAll();
-        return ativos.stream().map(AtivoDto::new).collect(Collectors.toList());
+    public Page<AtivoDto> findAll(Pageable pageable) {
+        Page<Ativo> ativos = ativoRepository.findAll(pageable);
+        return ativos.map(AtivoDto::new);
     }
 
     public AtivoDto findById(Long id) {

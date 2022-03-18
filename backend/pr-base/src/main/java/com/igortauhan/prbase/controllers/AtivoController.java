@@ -2,12 +2,13 @@ package com.igortauhan.prbase.controllers;
 
 import com.igortauhan.prbase.models.dto.AtivoDto;
 import com.igortauhan.prbase.services.AtivoService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/ativos")
@@ -20,8 +21,8 @@ public class AtivoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<AtivoDto>> findAll() {
-        List<AtivoDto> ativos = ativoService.findAll();
+    public ResponseEntity<Page<AtivoDto>> findAll(Pageable pageable) {
+        Page<AtivoDto> ativos = ativoService.findAll(pageable);
         return ResponseEntity.ok(ativos);
     }
 
