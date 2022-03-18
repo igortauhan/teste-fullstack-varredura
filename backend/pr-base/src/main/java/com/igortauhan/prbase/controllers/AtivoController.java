@@ -31,6 +31,12 @@ public class AtivoController {
         return ResponseEntity.ok(ativoDto);
     }
 
+    @GetMapping(value = "/email")
+    public ResponseEntity<AtivoDto> findByEmail(@RequestParam("email") String email) {
+        AtivoDto ativoDto = ativoService.findByEmail(email);
+        return ResponseEntity.ok(ativoDto);
+    }
+
     @PostMapping
     public ResponseEntity<AtivoDto> insert(@RequestBody AtivoDto ativoDto) {
         ativoDto = ativoService.insert(ativoDto);

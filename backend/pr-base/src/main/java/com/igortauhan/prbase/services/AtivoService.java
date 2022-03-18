@@ -30,6 +30,13 @@ public class AtivoService {
         ));
     }
 
+    public AtivoDto findByEmail(String email) {
+        Optional<Ativo> ativo = ativoRepository.findAtivoByEmail(email);
+        return new AtivoDto(ativo.orElseThrow(
+                () -> new RuntimeException("Ativo não encontrado! Email: " + email)
+        ));
+    }
+
     public AtivoDto insert(AtivoDto ativoDto) {
         Ativo ativo = fromDto(ativoDto);
         ativo.setId(null);
