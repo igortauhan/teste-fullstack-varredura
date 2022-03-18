@@ -1,6 +1,5 @@
 package com.igortauhan.prbase.controllers;
 
-import com.igortauhan.prbase.models.Ativo;
 import com.igortauhan.prbase.models.dto.AtivoDto;
 import com.igortauhan.prbase.services.AtivoService;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +26,9 @@ public class AtivoController {
     }
 
     @PostMapping
-    public ResponseEntity<AtivoDto> insert(@RequestBody Ativo ativo) {
-        AtivoDto ativoDto = ativoService.insert(ativo);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(ativo.getId()).toUri();
+    public ResponseEntity<AtivoDto> insert(@RequestBody AtivoDto ativoDto) {
+        ativoDto = ativoService.insert(ativoDto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(ativoDto.getId()).toUri();
         return ResponseEntity.created(uri).body(ativoDto);
     }
 }

@@ -22,9 +22,19 @@ public class AtivoService {
         return ativos.stream().map(AtivoDto::new).collect(Collectors.toList());
     }
 
-    public AtivoDto insert(Ativo ativo) {
+    public AtivoDto insert(AtivoDto ativoDto) {
+        Ativo ativo = fromDto(ativoDto);
         ativo.setId(null);
         ativo = ativoRepository.save(ativo);
         return new AtivoDto(ativo);
+    }
+
+    private Ativo fromDto(AtivoDto ativoDto) {
+        return new Ativo(
+                ativoDto.getId(),
+                ativoDto.getName(),
+                ativoDto.getEmail(),
+                ativoDto.getDomain()
+        );
     }
 }
