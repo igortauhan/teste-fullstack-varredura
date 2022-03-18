@@ -1,6 +1,7 @@
 package com.igortauhan.prbase.controllers;
 
 import com.igortauhan.prbase.models.Ativo;
+import com.igortauhan.prbase.models.dto.AtivoDto;
 import com.igortauhan.prbase.services.AtivoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,15 +21,15 @@ public class AtivoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Ativo>> findAll() {
-        List<Ativo> ativos = ativoService.findAll();
+    public ResponseEntity<List<AtivoDto>> findAll() {
+        List<AtivoDto> ativos = ativoService.findAll();
         return ResponseEntity.ok(ativos);
     }
 
     @PostMapping
-    public ResponseEntity<Ativo> insert(@RequestBody Ativo ativo) {
-        ativo = ativoService.insert(ativo);
+    public ResponseEntity<AtivoDto> insert(@RequestBody Ativo ativo) {
+        AtivoDto ativoDto = ativoService.insert(ativo);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(ativo.getId()).toUri();
-        return ResponseEntity.created(uri).body(ativo);
+        return ResponseEntity.created(uri).body(ativoDto);
     }
 }
