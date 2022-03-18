@@ -18,4 +18,9 @@ public class AtivoService {
     public List<Ativo> findAll() {
          return ativoRepository.findAll();
     }
+
+    public Ativo insert(Ativo ativo) {
+        ativo.setId(null);
+        return ativoRepository.save(ativo);
+    }
 }
