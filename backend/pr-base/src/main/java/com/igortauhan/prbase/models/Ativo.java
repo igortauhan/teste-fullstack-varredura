@@ -14,7 +14,11 @@ public class Ativo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @Column(unique = true)
     private String email;
+
+    @Column(unique = true)
     private String domain;
 
     @OneToMany(mappedBy = "ativo")
