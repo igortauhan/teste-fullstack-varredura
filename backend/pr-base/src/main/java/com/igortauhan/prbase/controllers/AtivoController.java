@@ -37,6 +37,12 @@ public class AtivoController {
         return ResponseEntity.ok(ativoDto);
     }
 
+    @GetMapping(value = "/domain")
+    public ResponseEntity<AtivoDto> findByDomain(@RequestParam("domain") String domain) {
+        AtivoDto ativoDto = ativoService.findByDomain(domain);
+        return ResponseEntity.ok(ativoDto);
+    }
+
     @PostMapping
     public ResponseEntity<AtivoDto> insert(@RequestBody AtivoDto ativoDto) {
         ativoDto = ativoService.insert(ativoDto);

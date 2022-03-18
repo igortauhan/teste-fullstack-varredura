@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface AtivoRepository extends JpaRepository<Ativo, Long> {
 
     Optional<Ativo> findAtivoByEmail(String email);
+
+    Optional<Ativo> findAtivoByDomain(String domain);
 }
