@@ -1,6 +1,7 @@
 package com.igortauhan.prbase.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,9 +29,7 @@ public class Records {
     private Integer xStore;
     private Integer simHash;
     private String bucket;
-    private List<String> keyValues;
     private String tags;
-    private List<String> relations;
     private String accessLevelH;
     private String mediaH;
     private String simHashH;
@@ -41,11 +40,17 @@ public class Records {
     private String indexFile;
     private String historyFile;
     private Boolean perfectMatch;
-    private String group;
+    private String groupField;
 
     @ManyToOne
     @JoinColumn(name = "ativo_id")
     private Ativo ativo;
+
+    @OneToMany(mappedBy = "records")
+    private List<KeyValue> keyValue = new ArrayList<>();
+
+    @OneToMany(mappedBy = "records")
+    private List<Relations> relations = new ArrayList<>();
 
     public Records() {
 
@@ -53,9 +58,9 @@ public class Records {
 
     public Records(Long id, String systemId, String owner, String storageId, Boolean inStore, Integer size,
                    Integer accessLevel, Integer type, Integer media, Date added, Date currentDate, String name,
-                   String description, Integer xStore, Integer simHash, String bucket, List<String> keyValues, String tags, List<String> relations, String accessLevelH,
+                   String description, Integer xStore, Integer simHash, String bucket, String tags, String accessLevelH,
                    String mediaH, String simHashH, String typeH, String tagsH, String randomId, String bucketH,
-                   String indexFile, String historyFile, Boolean perfectMatch, String group, Ativo ativo) {
+                   String indexFile, String historyFile, Boolean perfectMatch, String groupField, Ativo ativo) {
         this.id = id;
         this.systemId = systemId;
         this.owner = owner;
@@ -72,9 +77,7 @@ public class Records {
         this.xStore = xStore;
         this.simHash = simHash;
         this.bucket = bucket;
-        this.keyValues = keyValues;
         this.tags = tags;
-        this.relations = relations;
         this.accessLevelH = accessLevelH;
         this.mediaH = mediaH;
         this.simHashH = simHashH;
@@ -85,7 +88,7 @@ public class Records {
         this.indexFile = indexFile;
         this.historyFile = historyFile;
         this.perfectMatch = perfectMatch;
-        this.group = group;
+        this.groupField = groupField;
         this.ativo = ativo;
     }
 }
