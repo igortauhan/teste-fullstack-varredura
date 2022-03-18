@@ -6,6 +6,7 @@ import com.igortauhan.prbase.repositories.AtivoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,6 +21,13 @@ public class AtivoService {
     public List<AtivoDto> findAll() {
         List<Ativo> ativos = ativoRepository.findAll();
         return ativos.stream().map(AtivoDto::new).collect(Collectors.toList());
+    }
+
+    public AtivoDto findById(Long id) {
+        Optional<Ativo> ativo = ativoRepository.findById(id);
+        return new AtivoDto(ativo.orElseThrow(
+                () -> new RuntimeException("Ativo não encontrado! Id: " + id)
+        ));
     }
 
     public AtivoDto insert(AtivoDto ativoDto) {

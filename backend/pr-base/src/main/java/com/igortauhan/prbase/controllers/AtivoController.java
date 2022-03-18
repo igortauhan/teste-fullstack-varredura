@@ -25,6 +25,12 @@ public class AtivoController {
         return ResponseEntity.ok(ativos);
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<AtivoDto> findById(@PathVariable Long id) {
+        AtivoDto ativoDto = ativoService.findById(id);
+        return ResponseEntity.ok(ativoDto);
+    }
+
     @PostMapping
     public ResponseEntity<AtivoDto> insert(@RequestBody AtivoDto ativoDto) {
         ativoDto = ativoService.insert(ativoDto);
