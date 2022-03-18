@@ -1,6 +1,8 @@
 package com.igortauhan.prbase.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity()
 @Table(name = "tb_ativos")
@@ -15,15 +17,18 @@ public class Ativo {
     private String email;
     private String domain;
 
+    @OneToMany(mappedBy = "ativo")
+    private List<Records> records = new ArrayList<>();
+
     public Ativo() {
 
     }
 
-    public Ativo(Long id, String nome, String email, String dominio) {
+    public Ativo(Long id, String nome, String email, String domain) {
         this.id = id;
         this.name = nome;
         this.email = email;
-        this.domain = dominio;
+        this.domain = domain;
     }
 
     public Long getId() {
