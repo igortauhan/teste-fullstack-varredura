@@ -29,6 +29,13 @@ public class AtivoService {
         return new AtivoDto(ativo);
     }
 
+    public AtivoDto update(AtivoDto ativoDto, Long id) {
+        Ativo ativo = fromDto(ativoDto);
+        ativo.setId(id);
+        ativo = ativoRepository.save(ativo);
+        return new AtivoDto(ativo);
+    }
+
     private Ativo fromDto(AtivoDto ativoDto) {
         return new Ativo(
                 ativoDto.getId(),

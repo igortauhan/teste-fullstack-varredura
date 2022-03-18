@@ -31,4 +31,10 @@ public class AtivoController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(ativoDto.getId()).toUri();
         return ResponseEntity.created(uri).body(ativoDto);
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<AtivoDto> update(@RequestBody AtivoDto ativoDto, @PathVariable Long id) {
+        ativoDto = ativoService.update(ativoDto, id);
+        return ResponseEntity.noContent().build();
+    }
 }
