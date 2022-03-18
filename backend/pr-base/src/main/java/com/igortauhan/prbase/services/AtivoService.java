@@ -44,6 +44,11 @@ public class AtivoService {
         return new AtivoDto(ativo);
     }
 
+    public void delete(Long id) {
+        findById(id);
+        ativoRepository.deleteById(id);
+    }
+
     private Ativo fromDto(AtivoDto ativoDto) {
         return new Ativo(
                 ativoDto.getId(),

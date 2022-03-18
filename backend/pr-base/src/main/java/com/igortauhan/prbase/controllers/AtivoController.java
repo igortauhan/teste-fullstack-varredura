@@ -43,4 +43,10 @@ public class AtivoController {
         ativoDto = ativoService.update(ativoDto, id);
         return ResponseEntity.noContent().build();
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        ativoService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
