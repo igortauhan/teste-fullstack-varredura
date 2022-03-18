@@ -1,38 +1,23 @@
-package com.igortauhan.prbase.models;
+package com.igortauhan.prbase.models.dto;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import com.igortauhan.prbase.models.Ativo;
 
-@Entity()
-@Table(name = "tb_ativos")
-public class Ativo {
+public class AtivoDto {
 
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
-    @Column(unique = true)
     private String email;
-
-    @Column(unique = true)
     private String domain;
 
-    @OneToMany(mappedBy = "ativo")
-    private List<Records> records = new ArrayList<>();
-
-    public Ativo() {
+    public AtivoDto() {
 
     }
 
-    public Ativo(Long id, String nome, String email, String domain) {
-        this.id = id;
-        this.name = nome;
-        this.email = email;
-        this.domain = domain;
+    public AtivoDto(Ativo ativo) {
+        id = ativo.getId();
+        name = ativo.getName();
+        email = ativo.getEmail();
+        domain = ativo.getDomain();
     }
 
     public Long getId() {
