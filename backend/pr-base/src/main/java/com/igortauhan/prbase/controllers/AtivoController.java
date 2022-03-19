@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
@@ -45,14 +46,14 @@ public class AtivoController {
     }
 
     @PostMapping
-    public ResponseEntity<AtivoDto> insert(@RequestBody AtivoDto ativoDto) {
+    public ResponseEntity<AtivoDto> insert(@Valid @RequestBody AtivoDto ativoDto) {
         ativoDto = ativoService.insert(ativoDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(ativoDto.getId()).toUri();
         return ResponseEntity.created(uri).body(ativoDto);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<AtivoDto> update(@RequestBody AtivoDto ativoDto, @PathVariable Long id) {
+    public ResponseEntity<AtivoDto> update(@Valid @RequestBody AtivoDto ativoDto, @PathVariable Long id) {
         ativoDto = ativoService.update(ativoDto, id);
         return ResponseEntity.noContent().build();
     }
