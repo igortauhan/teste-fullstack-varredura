@@ -40,7 +40,6 @@ public class Records {
     private Boolean perfectmatch;
     private String group;
 
-
     public Records() {
 
     }
