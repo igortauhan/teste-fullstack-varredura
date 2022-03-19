@@ -2,6 +2,9 @@ server:
   port: 0
 
 spring:
+  config:
+    active:
+      on-prifle: test
   application:
     name: pr-base
   h2:
