@@ -63,7 +63,7 @@ public class AtivoService {
         ativoRepository.deleteById(id);
     }
 
-    private Ativo fromDto(AtivoDto ativoDto) {
+    public Ativo fromDto(AtivoDto ativoDto) {
         return new Ativo(
                 ativoDto.getId(),
                 ativoDto.getName(),
