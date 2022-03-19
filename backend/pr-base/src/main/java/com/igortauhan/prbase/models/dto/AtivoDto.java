@@ -2,11 +2,23 @@ package com.igortauhan.prbase.models.dto;
 
 import com.igortauhan.prbase.models.Ativo;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class AtivoDto {
 
     private Long id;
+
+    @NotNull(message = "Atributo name é obrigatório")
+    @NotEmpty(message = "Atributo name é obrigatório")
     private String name;
+
+    @NotNull(message = "Atributo email é obrigatório")
+    @NotEmpty(message = "Atributo email é obrigatório")
     private String email;
+
+    @NotNull(message = "Atributo domain é obrigatório")
+    @NotEmpty(message = "Atributo domain é obrigatório")
     private String domain;
 
     public AtivoDto() {

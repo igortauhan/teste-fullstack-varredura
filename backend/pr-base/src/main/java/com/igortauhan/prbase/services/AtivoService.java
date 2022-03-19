@@ -3,6 +3,7 @@ package com.igortauhan.prbase.services;
 import com.igortauhan.prbase.models.Ativo;
 import com.igortauhan.prbase.models.dto.AtivoDto;
 import com.igortauhan.prbase.repositories.AtivoRepository;
+import com.igortauhan.prbase.services.exceptions.ObjectNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -26,21 +27,21 @@ public class AtivoService {
     public AtivoDto findById(Long id) {
         Optional<Ativo> ativo = ativoRepository.findById(id);
         return new AtivoDto(ativo.orElseThrow(
-                () -> new RuntimeException("Ativo não encontrado! Id: " + id)
+                () -> new ObjectNotFoundException("Ativo não encontrado! Id: " + id)
         ));
     }
 
     public AtivoDto findByEmail(String email) {
         Optional<Ativo> ativo = ativoRepository.findAtivoByEmail(email);
         return new AtivoDto(ativo.orElseThrow(
-                () -> new RuntimeException("Ativo não encontrado! Email: " + email)
+                () -> new ObjectNotFoundException("Ativo não encontrado! Email: " + email)
         ));
     }
 
     public AtivoDto findByDomain(String domain) {
         Optional<Ativo> ativo = ativoRepository.findAtivoByDomain(domain);
         return new AtivoDto(ativo.orElseThrow(
-                () -> new RuntimeException("Ativo não encontrado! Email: " + domain)
+                () -> new ObjectNotFoundException("Ativo não encontrado! Email: " + domain)
         ));
     }
 
