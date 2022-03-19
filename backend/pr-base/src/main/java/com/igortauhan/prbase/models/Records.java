@@ -1,6 +1,7 @@
 package com.igortauhan.prbase.models;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,7 +28,7 @@ public class Records {
     private String name;
     private String description;
     private Integer xStore;
-    private Integer simHash;
+    private BigInteger simHash;
     private String bucket;
     private String tags;
     private String accessLevelH;
@@ -52,13 +53,16 @@ public class Records {
     @OneToMany(mappedBy = "records")
     private List<Relations> relations = new ArrayList<>();
 
+    @OneToMany(mappedBy = "records")
+    private List<TagsHValues> tagsh = new ArrayList<>();
+
     public Records() {
 
     }
 
     public Records(Long id, String systemId, String owner, String storageId, Boolean inStore, Integer size,
                    Integer accessLevel, Integer type, Integer media, Date added, Date currentDate, String name,
-                   String description, Integer xStore, Integer simHash, String bucket, String tags, String accessLevelH,
+                   String description, Integer xStore, BigInteger simHash, String bucket, String tags, String accessLevelH,
                    String mediaH, String simHashH, String typeH, String tagsH, String randomId, String bucketH,
                    String indexFile, String historyFile, Boolean perfectMatch, String groupField, Ativo ativo) {
         this.id = id;
