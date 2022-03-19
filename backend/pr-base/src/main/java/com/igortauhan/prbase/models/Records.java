@@ -21,40 +21,39 @@ public class Records {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String systemId;
+    private String systemid;
     private String owner;
-    private String storageId;
-    private Boolean inStore;
+    private String storageid;
+    private Boolean instore;
     private Integer size;
-    private Integer accessLevel;
+    private Integer accesslevel;
     private Integer type;
     private Integer media;
     private Date added;
-    private Date currentDate;
+    private Date date;
     private String name;
     private String description;
-    private Integer xStore;
-    private BigInteger simHash;
+    private Integer xscore;
+    private String simhash;
     private String bucket;
     private String tags;
-    private String accessLevelH;
-    private String mediaH;
-    private String simHashH;
-    private String typeH;
-    private String tagsH;
-    private String randomId;
-    private String bucketH;
-    private String indexFile;
-    private String historyFile;
-    private Boolean perfectMatch;
-    private String groupField;
+    private String accesslevelh;
+    private String mediah;
+    private String simhashh;
+    private String typeh;
+    private String randomid;
+    private String bucketh;
+    private String indexfile;
+    private String historyfile;
+    private Boolean perfectmatch;
+    private String group;
 
     @ManyToOne
     @JoinColumn(name = "ativo_id")
     private Ativo ativo;
 
     @OneToMany(mappedBy = "records")
-    private List<KeyValue> keyValue = new ArrayList<>();
+    private List<KeyValue> keyvalues = new ArrayList<>();
 
     @OneToMany(mappedBy = "records")
     private List<Relations> relations = new ArrayList<>();

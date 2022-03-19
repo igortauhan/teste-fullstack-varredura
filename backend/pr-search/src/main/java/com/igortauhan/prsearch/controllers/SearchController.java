@@ -3,10 +3,7 @@ package com.igortauhan.prsearch.controllers;
 import com.igortauhan.prsearch.models.GenericRequestClass;
 import com.igortauhan.prsearch.services.SearchService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/search")
@@ -19,8 +16,8 @@ public class SearchController {
     }
 
     @GetMapping
-    public ResponseEntity<GenericRequestClass> search(@RequestParam String pattern) {
-        GenericRequestClass genericRequestClass = searchService.search(pattern);
+    public ResponseEntity<GenericRequestClass> search(@RequestParam Long ativoId, @RequestParam String pattern) {
+        GenericRequestClass genericRequestClass = searchService.search(pattern, ativoId);
         return ResponseEntity.ok(genericRequestClass);
     }
 }
