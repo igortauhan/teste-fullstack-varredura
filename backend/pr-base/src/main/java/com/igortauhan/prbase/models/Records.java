@@ -3,7 +3,6 @@ package com.igortauhan.prbase.models;
 import lombok.*;
 
 import javax.persistence.*;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -46,6 +45,7 @@ public class Records {
     private String indexfile;
     private String historyfile;
     private Boolean perfectmatch;
+    @Column(name = "group_field")
     private String group;
 
     @ManyToOne
