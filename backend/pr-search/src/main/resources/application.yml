@@ -1,6 +1,5 @@
 server:
   port: 0
-
 spring:
   application:
     name: pr-search
@@ -10,3 +9,5 @@ eureka:
       defaultZone: http://pr-eureka-server:8761/eureka
     instance:
       id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+key:
+  intx:

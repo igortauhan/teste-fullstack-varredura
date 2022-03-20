@@ -13,10 +13,11 @@ import org.springframework.web.client.RestTemplate;
 public class RequestService {
 
     private final RestTemplate restTemplate;
-    private final HttpHeaders headers = PrepareRequestHeaders.getReadyHeaders();
+    private final PrepareRequestHeaders prepareRequestHeaders;
 
-    public RequestService(RestTemplateBuilder restTemplateBuilder) {
+    public RequestService(RestTemplateBuilder restTemplateBuilder, PrepareRequestHeaders prepareRequestHeaders) {
         this.restTemplate = restTemplateBuilder.build();
+        this.prepareRequestHeaders = prepareRequestHeaders;
     }
 
     public GenericRequestClass search(String pattern) {
@@ -26,14 +27,14 @@ public class RequestService {
         String getUrl = "https://2.intelx.io/intelligent/search/result?id=";
         String url = getUrl + bodyRequest.getId();
 
-        HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
+        HttpEntity<String> entity = new HttpEntity<>("parameters", prepareRequestHeaders.getReadyHeaders());
         return restTemplate.exchange(url, HttpMethod.GET, entity, GenericRequestClass.class).getBody();
     }
 
     private ResponseBodyRequest sendPost(String pattern) {
         RequestBody requestBody = new RequestBody(pattern);
 
-        HttpEntity<RequestBody> entity = new HttpEntity<>(requestBody, headers);
+        HttpEntity<RequestBody> entity = new HttpEntity<>(requestBody, prepareRequestHeaders.getReadyHeaders());
         String postUrl = "https://2.intelx.io/intelligent/search";
         return restTemplate.exchange(postUrl, HttpMethod.POST, entity, ResponseBodyRequest.class).getBody();
     }
