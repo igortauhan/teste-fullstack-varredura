@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    username: postgres
+    password: 12345
+  #jpa:
+    #properties:
+      #hibernate:
+        #jdbc:
+          #lob:
+            #non_contextual_creation: true
+    #hibernate:
+      #ddl-auto: create
+      #database: postgresql
+      #generate-ddl: true
