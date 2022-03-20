@@ -24,11 +24,10 @@ public class SearchService {
         this.recordsFeignClient = recordsFeignClient;
     }
 
-    public GenericRequestClass search(String pattern, Long ativoId) {
+    public List<Records> search(String pattern, Long ativoId) {
         logger.info("Fazendo requisicao para a API externa da INTX...");
         GenericRequestClass genericRequestClass = requestService.search(pattern);
-        List<Records> records = insertRecord(genericRequestClass, ativoId);
-        return genericRequestClass;
+        return insertRecord(genericRequestClass, ativoId);
     }
 
     private List<Records> insertRecord(GenericRequestClass genericRequestClass, Long ativoId) {
