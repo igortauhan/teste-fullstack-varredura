@@ -26,6 +26,12 @@ public class RecordsController {
         this.recordsService = recordsService;
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<List<Records>> getAllRecordsByAtivoId(@PathVariable Long id) {
+        List<Records> records = recordsService.getAllRecordsByAtivoId(id);
+        return ResponseEntity.ok(records);
+    }
+
     @PostMapping
     @ApiOperation("Retorna uma lista de Records")
     @ApiParam("Recebe um Json serializado de uma Classe Record pelo Body da requisicao e um ID Long do Ativo respectivo a consulta")
