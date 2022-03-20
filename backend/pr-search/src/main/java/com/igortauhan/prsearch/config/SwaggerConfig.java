@@ -21,7 +21,7 @@ public class SwaggerConfig {
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.igortauhan.prbase"))
+                .apis(RequestHandlerSelectors.basePackage("com.igortauhan.prsearch"))
                 .paths(regex("/ativos.*"))
                 .build()
                 .apiInfo(getApiInfo());
