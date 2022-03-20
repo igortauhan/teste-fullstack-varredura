@@ -1,6 +1,18 @@
 version: "3"
 
 services:
+  varredura-database:
+    image: postgres:12.10-alpine
+    container_name: varredura-database
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=varredura
+    networks:
+      - pr-varredura
+
   pr-eureka-server:
     container_name: pr-eureka-server
     build: 
@@ -30,6 +42,9 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - pr-eureka-server
+      - varredura-database
+    environment: 
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://varredura-database:5432/varredura
     networks:
       - pr-varredura
 
