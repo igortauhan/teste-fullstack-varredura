@@ -1,6 +1,5 @@
 package com.igortauhan.prsearch.controllers;
 
-import com.igortauhan.prsearch.models.GenericRequestClass;
 import com.igortauhan.prsearch.models.Records;
 import com.igortauhan.prsearch.services.SearchService;
 import io.swagger.annotations.Api;
