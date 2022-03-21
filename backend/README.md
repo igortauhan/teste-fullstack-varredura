@@ -39,6 +39,8 @@ Endpoint utilizado para armazenar todos os dados de monitoramento de *Ativos* ca
 
 - **http://localhost:8080/records** -> GET = Recebe um ***JSON Serializado*** de String com campos de **Records** / Retorna uma Lista de Records
 
+Apesar do projeto estar com o Swagger configurado, não consegui configurar o roteamento para o Swagger dos Controllers no Gateway.
+
 ### Bibliotecas externas
 
 - Gson (para serialização de objetos Records)
