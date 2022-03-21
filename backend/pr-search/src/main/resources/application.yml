@@ -3,6 +3,9 @@ server:
 spring:
   application:
     name: pr-search
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 eureka:
   client:
     serviceUrl:

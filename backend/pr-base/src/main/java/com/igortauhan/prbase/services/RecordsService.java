@@ -24,6 +24,10 @@ public class RecordsService {
         this.gsonConfig = gsonConfig;
     }
 
+    public List<Records> getAllRecordsByAtivoId(Long id) {
+        return recordsRepository.getAllRecordsByAtivoId(id);
+    }
+
     public List<Records> insert(String recordsJson, Long ativoId) {
         GenericRequestClass genericRequestClass = convertJsonToGenericClass(recordsJson);
         List<Records> records = getRecordsFromGenericClass(genericRequestClass);
